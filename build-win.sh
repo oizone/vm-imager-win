@@ -13,6 +13,16 @@ if ! curl -o ${TOOLFILE} ${TOOLURL}${TOOLFILE}; then
    exit 1
 fi
 
+if ! -f ./packer ; then
+    if ! curl -o packer.zip https://releases.hashicorp.com/packer/1.7.0/packer_1.7.0_linux_amd64.zip; then
+	exit 1
+    fi
+    if ! unzip packer.zip; then
+	exit 1
+    fi
+fi
+
+
 ln -sf ${TOOLFILE} setup64.exe
 TOOLS_VERSION=`echo $TOOLFILE|cut -d "-" -f 3`
 
