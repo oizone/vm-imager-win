@@ -19,7 +19,8 @@
         "convert_to_template": "false",
 	"export": {
 	    "force": true,
-	    "output_directory": "{{user `vsphere-export-folder`}}/{{user `vm-name`}}/"
+	    "output_directory": "{{user `vsphere-export-folder`}}/{{user `vsphere-export-name`}}/",
+	    "name": "{{user `vsphere-export-name`}}"
 	},
 
         "vm_name": "{{user `vm-name`}}",
@@ -35,7 +36,7 @@
         "boot_command": ["<spacebar>"],
         "boot_wait": "{{user `boot_wait`}}",
         "cdrom_type": "sata",
-        "remove_cdrom": true,
+	"remove_cdrom": true,
   
         "storage": [
           {
