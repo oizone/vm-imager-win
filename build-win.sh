@@ -23,7 +23,7 @@ for OS in autounattend/${OS_VER}/*; do
     EXPORT_NAME="vsphere-export-name=`echo $OSNAME| sed 's/ /_/g'`-${OS_VERSION}-VMtools-${TOOLS_VERSION}"
     EXPORT_FOLDER="vsphere-export-folder=./ovf-export/${OS_VER}"
     echo $EXPORT_NAME
-    if ! ../packer build -var-file=credentials.json -var "${OS_ISO}" -var "${OS_CHECKSUM}" -var "${OSVAR}" -var "${EXPORT_FOLDER}" -var "${EXPORT_NAME}" -force windows${OS_VER}.json; then
+    if ! ./packer build -var-file=credentials.json -var "${OS_ISO}" -var "${OS_CHECKSUM}" -var "${OSVAR}" -var "${EXPORT_FOLDER}" -var "${EXPORT_NAME}" -force windows${OS_VER}.json; then
 	exit 1
     fi
     #cd ovf-export
