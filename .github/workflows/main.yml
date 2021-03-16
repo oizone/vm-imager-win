@@ -33,5 +33,5 @@ jobs:
       run: |
        GH_RUNNER_VERSION=`curl -s https://api.github.com/repos/actions/runner/releases/latest|grep tag_name|cut -d"\"" -f 4|sed 's/v//'`
        echo ${GH_RUNNER_VERSION}
-       docker buildx build -f Dockerfile -t ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_REPO }}:latest --build-arg GH_RUNNER_VERSION=${GH_RUNNER_VERSION} --output "type=image,push=true" --platform linux/amd64 .
-       #docker buildx build -f Dockerfile -t ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_REPO }}:latest --build-arg GH_RUNNER_VERSION=${GH_RUNNER_VERSION} --output "type=image,push=true" --platform linux/amd64,linux/arm/v7,linux/arm64 .
+       #docker buildx build -f Dockerfile -t ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_REPO }}:latest --build-arg GH_RUNNER_VERSION=${GH_RUNNER_VERSION} --output "type=image,push=true" --platform linux/amd64 .
+       docker buildx build -f Dockerfile -t ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_REPO }}:latest --build-arg GH_RUNNER_VERSION=${GH_RUNNER_VERSION} --output "type=image,push=true" --platform linux/amd64,linux/arm/v7,linux/arm64 .

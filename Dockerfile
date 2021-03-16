@@ -10,7 +10,9 @@ ENV ANSIBLE_HOST_KEY_CHECKING=False
 ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=yes
 
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends python3 unzip xorriso
+RUN apt-get install -y --no-install-recommends python3 
+RUN apt-get install -y --no-install-recommends unzip
+RUN apt-get install -y --no-install-recommends xorriso
 
 WORKDIR /actions-runner
 COPY install_actions.sh /actions-runner
