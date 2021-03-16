@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:5.0
+FROM mcr.microsoft.com/dotnet/core/sdk:latest
 LABEL maintainer="oizone@oizone.net"
 
 ARG TARGETPLATFORM
