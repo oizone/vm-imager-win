@@ -1,6 +1,7 @@
 #!/bin/bash -x
-GH_RUNNER_VERSION=`curl -s https://api.github.com/repos/actions/runner/releases/latest|grep tag_name|cut -d"\"" -f 4|sed 's/v//'`
-TARGETPLATFORM=$1
+#GH_RUNNER_VERSION=`curl -s https://api.github.com/repos/actions/runner/releases/latest|grep tag_name|cut -d"\"" -f 4|sed 's/v//'`
+GH_RUNNER_VERSION=$1
+TARGETPLATFORM=$2
 
 export TARGET_ARCH="x64"
 if [[ $TARGETPLATFORM == "linux/arm/v7" ]]; then
