@@ -35,6 +35,10 @@ jobs:
       run: echo `curl -s https://api.github.com/repos/actions/runner/releases/latest|grep tag_name|cut -d"\"" -f 4|sed 's/v//'`
     - name: GH_RUNNER_VERSION
       run: echo $GH_RUNNER_VERSION
+    - name: Run Buildx test
+      run: |
+       GH_RUNNER_VERSION=`curl -s https://api.github.com/repos/actions/runner/releases/latest|grep tag_name|cut -d"\"" -f 4|sed 's/v//'`
+       echo ${GH_RUNNER_VERSION}
     - name: Run Buildx
       run: |
        GH_RUNNER_VERSION=`curl -s https://api.github.com/repos/actions/runner/releases/latest|grep tag_name|cut -d"\"" -f 4|sed 's/v//'`
