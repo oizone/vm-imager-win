@@ -2,12 +2,14 @@
 
 MD5=`md5sum $1 | cut -d" " -f 1`
 OS_CHECKSUM="os_iso_checksum=${MD5}"
+ISOFILE=`echo $1 |sed -e 's/.*\/\(.*\)\.iso.*/\1/'`".iso"
 OS_ISO="os_iso_path=${1}"
 OS_VER=`echo $1| cut -d "_" -f 4`
 OS_VERSION=`echo $1|cut -d"_" -f 5-7`
 
 TOOLURL="https://packages.vmware.com/tools/releases/latest/windows/x64/"
 TOOLFILE=`curl ${TOOLURL}| grep -oP 'HREF="\K[^"]*' |tail -1`
+
 
 if ! curl -o ${TOOLFILE} ${TOOLURL}${TOOLFILE}; then
    exit 1
@@ -23,7 +25,7 @@ if [ ! -f ./packer ] ; then
 fi
 
 if [[ $1 == ^http* ]]; then
-    curl -O $1
+    curl -o ${ISOFILE} "$1"
 fi
 
 
