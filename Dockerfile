@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:latest
+FROM mcr.microsoft.com/dotnet/sdk:latest
 LABEL maintainer="oizone@oizone.net"
 
 ARG GH_RUNNER_VERSION="2.274.2"
@@ -10,9 +10,7 @@ ENV ANSIBLE_HOST_KEY_CHECKING=False
 ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=yes
 
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends python3 
-RUN apt-get install -y --no-install-recommends unzip
-RUN apt-get install -y --no-install-recommends xorriso
+RUN apt-get install -y --no-install-recommends python3 unzip xorriso python3-boto3
 
 WORKDIR /actions-runner
 COPY install_actions.sh /actions-runner

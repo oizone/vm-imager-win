@@ -22,6 +22,10 @@ if [ ! -f ./packer ] ; then
     fi
 fi
 
+if [[ $1 == ^http* ]]; then
+    curl -O $1
+fi
+
 
 ln -sf ${TOOLFILE} setup64.exe
 TOOLS_VERSION=`echo $TOOLFILE|cut -d "-" -f 3`
@@ -44,8 +48,8 @@ for OS in autounattend/${OS_VER}/*; do
     #cd ..
 done
 
-mkdir -p windows/${OS_VER}
-mv ovf-export/${OS_VER}/* windows/${OS_VER}/
+mkdir -p windows
+mv ovf-export/${OS_VER}/* windows/
 
 #if ! python3 ../make_vcsp_2018.py -n windows -t local -p windows/${OS_VER}; then
 #    exit 1
@@ -53,10 +57,10 @@ mv ovf-export/${OS_VER}/* windows/${OS_VER}/
 
 #../azcopy_linux_amd64_10.9.0/azcopy cp windows/${OS_VER} "https://${STORAGE_ACCOUNT}.blob.core.windows.net/${STORAGE_CONTAINER}/windows/?${SAS}" --recursive=true
 
-#if ! python uploads3.py windows/${OS_VER}; then
-#    exit 1
-#fi
+if ! python uploads3.py windows; then
+    exit 1
+fi
 
-#if ! python3 ../make_vcsp_2018.py -n hiaas-vmimage-dev -t s3 -p hiaas-vmimage-dev; then
-#    exit 1
-#fi
+if ! python3 make_vcsp_2018.py -n hiaas-vmimage-dev -t s3 -p hiaas-vmimage-dev; then
+    exit 1
+fi
