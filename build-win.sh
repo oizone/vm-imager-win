@@ -1,9 +1,9 @@
 #!/bin/bash
 
-MD5=`md5sum $1 | cut -d" " -f 1`
-OS_CHECKSUM="os_iso_checksum=${MD5}"
+
 ISOFILE=`echo $1 |sed -e 's/.*\/\(.*\)\.iso.*/\1/'`".iso"
-OS_ISO="os_iso_path=${1}"
+
+OS_ISO="os_iso_path=${ISOFILE}"
 OS_VER=`echo $1| cut -d "_" -f 4`
 OS_VERSION=`echo $1|cut -d"_" -f 5-7`
 
@@ -25,10 +25,12 @@ if [ ! -f ./packer ] ; then
 fi
 
 if [[ $1 =~ ^http* ]]; then
-    echo "DL ISO"
+    echo "DL ISO ${ISOFILE}"
     curl -o ${ISOFILE} "$1"
 fi
 
+MD5=`md5sum ${ISOFILE} | cut -d" " -f 1`
+OS_CHECKSUM="os_iso_checksum=${MD5}"
 
 ln -sf ${TOOLFILE} setup64.exe
 TOOLS_VERSION=`echo $TOOLFILE|cut -d "-" -f 3`
