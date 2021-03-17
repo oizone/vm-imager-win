@@ -44,7 +44,7 @@ jobs:
           mv credentials ~/.aws/
       - name: Create image
         run: |
-          ISOURL=`echo ${{ github.event.inputs.isourl }}|base64 -Dd`
+          ISOURL=`echo ${{ github.event.inputs.isourl }}|base64 -d`
           #ISOURL="${{ secrets.ISOURL }}"
           ./build-win.sh "${ISOURL}"
 
