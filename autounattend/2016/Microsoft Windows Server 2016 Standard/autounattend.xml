@@ -82,7 +82,7 @@
                 <ProductKey>
                     <!-- Do not uncomment the Key element if you are using trial ISOs -->
                     <!-- You must uncomment the Key element (and optionally insert your own key) if you are using retail or volume license ISOs -->
-                    <Key>###STANDARD_KEY###</Key>
+                    <Key>###STANDARD_KEY_2016###</Key>
                     <WillShowUI>OnError</WillShowUI>
                 </ProductKey>
                 <AcceptEula>true</AcceptEula>
@@ -121,7 +121,7 @@
                 <SynchronousCommand wcm:action="add">
                     <Order>99</Order>
                     <Description>License</Description>
-                    <CommandLine>c:\Windows\system32\cscript.exe c:\Windows\system32\slmgr.vbs /ipk ###STANDARD_KEY###</CommandLine>
+                    <CommandLine>c:\Windows\system32\cscript.exe c:\Windows\system32\slmgr.vbs /ipk ###STANDARD_KEY_2016###</CommandLine>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
