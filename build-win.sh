@@ -24,7 +24,8 @@ if [ ! -f ./packer ] ; then
     fi
 fi
 
-if [[ $1 == ^http* ]]; then
+if [[ $1 =~ ^http* ]]; then
+    echo "DL ISO"
     curl -o ${ISOFILE} "$1"
 fi
 
