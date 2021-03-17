@@ -31,11 +31,11 @@ jobs:
           ls -l
       - name: Set secrets to param files
         run: |
-          ./set-params.sh credentials.json VCENTER_NAME "${{ secrets.VCENTER_NAME }}"
-          ./set-params.sh credentials.json VCENTER_USER "${{ secrets.VCENTER_USER }}"
-          ./set-params.sh credentials.json VCENTER_PASSWORD "${{ secrets.VCENTER_PASSWORD }}"
-          ./set-params.sh credentials AWS_ACCESS_KEY "${{ secrets.AWS_ACCESS_KEY }}"
-          ./set-params.sh credentials AWS_SECRET_KEY "${{ secrets.AWS_SECRET_KEY }}"
+          ./set-param.sh credentials.json VCENTER_NAME "${{ secrets.VCENTER_NAME }}"
+          ./set-param.sh credentials.json VCENTER_USER "${{ secrets.VCENTER_USER }}"
+          ./set-param.sh credentials.json VCENTER_PASSWORD "${{ secrets.VCENTER_PASSWORD }}"
+          ./set-param.sh credentials AWS_ACCESS_KEY "${{ secrets.AWS_ACCESS_KEY }}"
+          ./set-param.sh credentials AWS_SECRET_KEY "${{ secrets.AWS_SECRET_KEY }}"
           mkdir ~./aws
           mv credentials ~./aws/
       - name: Create image
