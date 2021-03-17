@@ -28,6 +28,7 @@ jobs:
       - name: Debug stuff
         run: |
           pwd
+          echo ~
           ls -l
       - name: Set secrets to param files
         run: |
@@ -38,7 +39,6 @@ jobs:
           ./set-param.sh credentials AWS_SECRET_KEY "${{ secrets.AWS_SECRET_KEY }}"
           mkdir ~./aws
           mv credentials ~./aws/
-          echo ~
       - name: Create image
         run: |
           ./build-win.sh "${{ secrets.ISOURL }}"
