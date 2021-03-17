@@ -25,6 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Debug stuff
+        run: |
+          pwd
+          ls -l
       - name: Set secrets to param files
         run: |
           ./set-params.sh credentials.json VCENTER_NAME "${{ secrets.VCENTER_NAME }}"
