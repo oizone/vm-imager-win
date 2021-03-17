@@ -25,12 +25,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Set secrets to param files
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          ./set-params.sh credentials.json VCENTER_NAME "${{ secrets.VCENTER_NAME }}"
+          ./set-params.sh credentials.json VCENTER_USER "${{ secrets.VCENTER_USER }}"
+          ./set-params.sh credentials.json VCENTER_PASSWORD "${{ secrets.VCENTER_PASSWORD }}"
+          ./set-params.sh credentials AWS_ACCESS_KEY "${{ secrets.AWS_ACCESS_KEY }}"
+          ./set-params.sh credentials AWS_SECRET_KEY "${{ secrets.AWS_SECRET_KEY }}"
+          mkdir ~./aws
+	  mv credentials ~./aws/
+
+      - name: Create image
+        run: |
+          ./build-win.sh "${{ secrets.ISOURL }}"
+

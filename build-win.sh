@@ -26,7 +26,9 @@ fi
 
 if [[ $1 =~ ^http* ]]; then
     echo "DL ISO ${ISOFILE}"
-    curl -o ${ISOFILE} "$1"
+    if ! curl -o ${ISOFILE} "$1"; then
+	exit 1
+    fi
 fi
 
 MD5=`md5sum ${ISOFILE} | cut -d" " -f 1`
