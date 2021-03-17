@@ -14,7 +14,7 @@
         "folder": "{{user `vsphere-folder`}}",
   
         "communicator": "none",
-        "shutdown_timeout": "59m",
+        "shutdown_timeout": "30m",
   
         "convert_to_template": "false",
 	"export": {
