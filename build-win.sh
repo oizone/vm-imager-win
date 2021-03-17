@@ -26,7 +26,7 @@ fi
 
 if [[ $1 =~ ^http* ]]; then
     echo "DL ISO ${ISOFILE}"
-    if ! wget -O ${ISOFILE} "$1"; then
+    if ! wget -q -O ${ISOFILE} "$1"; then
 	exit 1
     fi
 fi
