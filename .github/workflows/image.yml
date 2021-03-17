@@ -32,10 +32,10 @@ jobs:
           ./set-param.sh credentials.json VCENTER_PASSWORD "${{ secrets.VCENTER_PASSWORD }}"
           ./set-param.sh credentials AWS_ACCESS_KEY "${{ secrets.AWS_ACCESS_KEY }}"
           ./set-param.sh credentials AWS_SECRET_KEY "${{ secrets.AWS_SECRET_KEY }}"
-          find autounattend -name autounattend.xml -exec ./set-param.sh {} STANDARD_KEY_2016 "${{ secrets.STANDARD_KEY_2016 }}"
-          find autounattend -name autounattend.xml -exec ./set-param.sh {} DATACENTER_KEY_2016 "${{ secrets.DATACENTER_KEY_2016 }}"
-          find autounattend -name autounattend.xml -exec ./set-param.sh {} STANDARD_KEY_2019 "${{ secrets.STANDARD_KEY_2019 }}"
-          find autounattend -name autounattend.xml -exec ./set-param.sh {} DATACENTER_KEY_2019 "${{ secrets.DATACENTER_KEY_2019 }}"
+          find autounattend -name autounattend.xml -exec ./set-param.sh {} STANDARD_KEY_2016 "${{ secrets.STANDARD_KEY_2016 }}" \;
+          find autounattend -name autounattend.xml -exec ./set-param.sh {} DATACENTER_KEY_2016 "${{ secrets.DATACENTER_KEY_2016 }}" \;
+          find autounattend -name autounattend.xml -exec ./set-param.sh {} STANDARD_KEY_2019 "${{ secrets.STANDARD_KEY_2019 }}" \;
+          find autounattend -name autounattend.xml -exec ./set-param.sh {} DATACENTER_KEY_2019 "${{ secrets.DATACENTER_KEY_2019 }}" \;
           mkdir -p ~/.aws
           mv credentials ~/.aws/
       - name: Create image
