@@ -34,7 +34,6 @@ jobs:
           ./set-params.sh credentials AWS_SECRET_KEY "${{ secrets.AWS_SECRET_KEY }}"
           mkdir ~./aws
 	  mv credentials ~./aws/
-
       - name: Create image
         run: |
           ./build-win.sh "${{ secrets.ISOURL }}"
