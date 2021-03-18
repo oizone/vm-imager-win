@@ -64,7 +64,7 @@ mv ovf-export/${OS_VER}/* windows/
 
 #../azcopy_linux_amd64_10.9.0/azcopy cp windows/${OS_VER} "https://${STORAGE_ACCOUNT}.blob.core.windows.net/${STORAGE_CONTAINER}/windows/?${SAS}" --recursive=true
 
-if ! python uploads3.py windows; then
+if ! python3 uploads3.py windows; then
     exit 1
 fi
 
